@@ -4,6 +4,9 @@
 
 replicaCount: 1
 
+app:
+  port: 5000
+
 image:
   repository: registry.gitlab.com/maaciekk/bmi-calculator-app
   pullPolicy: IfNotPresent
