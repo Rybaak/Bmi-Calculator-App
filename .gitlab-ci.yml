@@ -1,7 +1,6 @@
 image:
   name: buildpacksio/pack
-  entrypoint: ["/bin/sh","-c"]
-  
+ 
 pack-job:
   script:
-    - /usr/local/bin/pack build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:v3 -e "GOOGLE_ENTRYPOINT=python app.py" --publish
+    - pack build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:v3 -e "GOOGLE_ENTRYPOINT=python app.py" --publish
