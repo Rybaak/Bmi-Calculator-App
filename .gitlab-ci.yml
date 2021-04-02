@@ -1,0 +1,4 @@
+default:
+  image: buildpacksio/pack
+  script:
+    - pack build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:v3 -e "GOOGLE_ENTRYPOINT=python app.py" --publish
