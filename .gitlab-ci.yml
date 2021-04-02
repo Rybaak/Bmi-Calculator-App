@@ -1,6 +1,6 @@
 pack-job:
   image: buildpacksio/pack
-  stage: dockerize
+  stage: build
   services:
     - docker:dind
   script:
