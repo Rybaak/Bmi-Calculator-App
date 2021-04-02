@@ -1,8 +1,3 @@
 image:
   name: buildpacksio/pack
-  entrypoint: ["/bin/bash","-c"]
-  
-pack-job:
-  script:
-    - echo $CI_JOB_TOKEN | docker login -u argocd --password-stdin registry.gitlab.com
-    - /usr/local/bin/pack build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:v3 -e "GOOGLE_ENTRYPOINT=python app.py" --publish
+  entrypoint: ["/usr/local/bin/pack build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:v3 -e "GOOGLE_ENTRYPOINT=python app.py" --publish"]
