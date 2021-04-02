@@ -1,6 +1,6 @@
 image:
   name: buildpacksio/pack
-  entrypoint: ["/bin/sh","-c"]
+  entrypoint: ["/bin/bash","-c"]
   
 pack-job:
   script:
