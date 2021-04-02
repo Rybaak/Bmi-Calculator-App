@@ -1,4 +1,8 @@
-default:
+pack-job:
   image: buildpacksio/pack
+  stage: dockerize
+  services:
+    - docker:dind
   script:
-    - build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:v3 -e "GOOGLE_ENTRYPOINT=python app.py" --publish
+    - echo $CI_JOB_TOKEN | docker login -u argocd --password-stdin registry.gitlab.com
+    - pack build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:v3 -e "GOOGLE_ENTRYPOINT=python app.py" --publish
