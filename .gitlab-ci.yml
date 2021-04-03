@@ -19,5 +19,4 @@ build_and_push_image:
   - tar xvf pack-v0.18.0-linux.tgz
   - rm pack-v0.18.0-linux.tgz
   script:
-  - echo "$GITLAB_PASSWORD" | docker login registry.gitlab.com --username "$GITLAB_USER" --password-stdin
-  - ./pack build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:lastest -e "GOOGLE_ENTRYPOINT=python app.py" --publish
+    - ./pack build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:lastest -e "GOOGLE_ENTRYPOINT=python app.py" --publish
