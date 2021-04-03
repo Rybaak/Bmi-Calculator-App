@@ -1,7 +1,24 @@
-image:
-  name: buildpacksio/pack
-  entrypoint: [""]
-  
-pack-job:
+image: docker:stable
+
+variables:
+  DOCKER_DRIVER: overlay2
+  REALM: shared
+  DOCKER_HOST: tcp://docker:2375/
+
+services:
+- name: docker:dind
+  entrypoint: ["env", "-u", "DOCKER_HOST"]
+  command: ["dockerd-entrypoint.sh"]
+
+stages:
+- build
+
+build_and_push_image:
+  stage: build
+  before_script:
+  - wget https://github.com/buildpacks/pack/releases/download/v0.18.0/pack-v0.18.0-linux.tgz
+  - tar xvf pack-v0.18.0-linux.tgz
+  - rm pack-v0.18.0-linux.tgz
   script:
-    - pack build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:v3 -e "GOOGLE_ENTRYPOINT=python app.py" --publish
+  - echo "$GITLAB_PASSWORD" | docker login registry.gitlab.com --username "$GITLAB_USER" --password-stdin
+  - ./pack build registry.gitlab.com/maaciekk/bmi-calculator-app --builder gcr.io/buildpacks/builder:lastest -e "GOOGLE_ENTRYPOINT=python app.py" --publish
