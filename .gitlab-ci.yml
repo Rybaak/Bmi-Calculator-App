@@ -14,7 +14,7 @@ stages:
 
 build_and_push_image:
   stage: build
-  tags: ['sa']
+  tags: ['lplab']
   before_script:
   - wget https://github.com/buildpacks/pack/releases/download/v0.18.0/pack-v0.18.0-linux.tgz
   - tar xvf pack-v0.18.0-linux.tgz
