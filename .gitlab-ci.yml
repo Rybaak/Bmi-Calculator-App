@@ -1,13 +1,4 @@
 image: docker:stable
-
-services:
-   - name: docker:dind
-  
-variables:
-  DOCKER_HOST: tcp://192.168.80.26:2375/
-  DOCKER_DRIVER: overlay2
-  DOCKER_TLS_CERTDIR: ""
-
 stages:
 - build
 
