@@ -8,7 +8,7 @@ COPY . .
 RUN pip install -r requirements.txt
 
 # You need to specify Python file we're running
-ENTRYPOINT ["python", __TO_FIX_APPLICATION_FILE__]
+ENTRYPOINT ["python", app.py]
 
 # You need to specify port where application is listening
-EXPOSE __TO_FIX_APPLICATION_PORT__
+EXPOSE 5000
